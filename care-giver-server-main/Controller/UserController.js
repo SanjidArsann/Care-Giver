@@ -67,7 +67,7 @@ exports.addUser = async (req, res, next) => {
             next(createError(500, "Email Already exists"));
         } else {
             const isFirstUser = (await UserModel.countDocuments()) === 0;
-            req.body.role = isFirstUser ? "admin" : "user";
+            // req.body.role = isFirstUser ? "admin" : "user";
             const newUser = new UserModel(data);
             const result = await newUser.save();
 

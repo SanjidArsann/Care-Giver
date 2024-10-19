@@ -86,6 +86,11 @@ const JobSchema = new mongoose.Schema(
             // minLength: [5, "Company name is too short"],
             // maxLength: [100, "Company name is too long"],
         },
+
+        attachment: {
+            type: String,
+            requried: [true, "Job attachments is requried"],
+        },
     },
     { timestamps: true } // to keep track
 );

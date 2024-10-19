@@ -33,7 +33,7 @@ const JobCard = ({ job }) => {
         };
         try {
             const response = await postHandler({
-                url: "https://full-stack-job-portal-server.vercel.app/api/v1/application/apply",
+                url: "http://localhost:9000/api/v1/application/apply",
                 body: appliedJob,
             });
             Swal.fire({

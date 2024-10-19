@@ -24,7 +24,7 @@ const Register = () => {
 
     const onSubmit = async (data) => {
         // password: A@1abcde
-        const { username, email, password, confirmPassword } = data;
+        const { username, email, password, confirmPassword,role } = data;
 
         if (password !== confirmPassword) {
             setIsPasswordMatched({
@@ -34,11 +34,11 @@ const Register = () => {
             return;
         } else {
             setIsLoading(true);
-            const user = { username, email, password };
+            const user = { username, email, password ,role};
             // posting
             try {
                 const response = await axios.post(
-                    "https://full-stack-job-portal-server.vercel.app/api/v1/auth/register",
+                    "http://localhost:9000/api/v1/auth/register",
                     user
                 );
 
@@ -84,6 +84,22 @@ const Register = () => {
                     </p>
                 )}
                 <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+                         <div className="row">
+                        <label htmlFor="role">Role</label>
+                        <select
+                            name="role"
+                            {...register("role", {
+                                required: {
+                                    value: true,
+                                    message: "Role is required",
+                                },
+                            })}
+                        >
+                            <option value="">Select Role</option>
+                            <option value="user">Nurse</option>
+                            <option value="recruiter">Patient</option>
+                        </select>
+                    </div>
                     <div className="row">
                         <label htmlFor="username">Username</label>
                         <input
